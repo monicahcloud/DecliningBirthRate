@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<title>Maps</title>
+{% endblock %}
+
+{% block body%}
+<h1>Maps of USA</h1>
+{% for post in posts%}
+    <h2>{{post.title}}</h2>
+    <p>{{post.content}}</p>
+{% endfor%}
+
+{% endblock %}
