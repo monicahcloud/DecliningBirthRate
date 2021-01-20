@@ -1,4 +1,4 @@
-State of Residence,County of Residence,Year,Births,Birth Rate,Fertility Rate
+state,county,year,births,birthrate,fertilityrate
 Alabama,"Baldwin County, AL",2016,2247,10.77,61.3
 Alabama,"Baldwin County, AL",2017,2322,10.92,62.42
 Alabama,"Baldwin County, AL",2018,2290,Not Available,Not Available
