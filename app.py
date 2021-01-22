@@ -13,15 +13,29 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://mpiljlhpdduyfa:2332f5bec0021
 db = SQLAlchemy(app)
 
 # Map to database
-class Total(db.Model):
-    __tablename__ = "total"
+class Birth(db.Model):
+    __tablename__ = "births"
     state = db.Column('state', db.Unicode, primary_key=True)
     year = db.Column('year', db.Unicode)
     race = db.Column('race', db.Unicode)
     births = db.Column('births', db.Unicode)
-    femalepop = db.Column('femalepop', db.Unicode)
-    fertilityrate = db.Column('fertilityrate', db.Unicode) 
+
     
+births = Birth()
+print(births)
+
+import sqlalchemy
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine, func
+
+engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
+
+Base = automap_base()
+Base.prepare(engine, reflect=True)
+
+Base.classes.keys()
+birth = Base.classes.births
 
 # Define what to do when a user hits the index route
 # @app.route("/")
