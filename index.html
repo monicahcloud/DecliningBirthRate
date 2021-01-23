@@ -7,10 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
+    <link
+      rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   <link rel="stylesheet" href="static/css/main.css" />
-  <link rel="stylesheet" href="static/js/main.js">
-  <link rel="stylesheet" href="static/css/slideshow.css">
+  <link rel="stylesheet" href="static/js/app.js">
+  
 
 </head>
 
@@ -19,15 +20,25 @@
   <!-- Start of navbar -->
 
   <!-- Navbar content -->
-  <h1 class="text-center"> The US Birth Rate Is Declining</h1>
+  <h1 class="text-center "style= background-color:#00b3b3;> Declining US Birthrates</h1>
   <hr>
-  <h2 class="text-center">Reproduction is important in order to achieve a balance of family life, diversity, socio-economic equality and
-    progress across communities.</h2>
+  <h2 class="text-center">"Reproduction is important in order to achieve a balance of family life, diversity, socio-economic equality and
+    progress across communities."</h2>
+
+    <img
+    src="static/images/adorable-babies-of-different-races.jpg"
+    class="img-fluid rounded mx-auto d-block"
+    alt="bacteria"
+    style="width: 800px; height: 500px"
+  />
+  <!-- <p>Use the interactive charts below to explore the dataset</p> -->
+</div>
+</div>
   <!-- </nav> -->
   <!-- Navbar content -->
-  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <!-- <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
     <div class="dropdown">
-      <a class="navbar-brand" href="/Git Repo/DecliningBirthRate/index.html">
+      <a class="navbar-brand" href="/Git Repo/DecliningBirthRate/templates/index.html">
         <h2>Birth Trends</h2>
  
       </a>
@@ -35,14 +46,13 @@
         aria-expanded="false">
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="templates/race.html">Number of Births by Race</a></li>
-        <li><a class="dropdown-item" href="templates/state.html">Number of Births by State</a></li>
-        <li><a class="dropdown-item" href="templates/age.html">Birth Rath per 1,000 Women Ages 15-44</a></li>
-        <li><a class="dropdown-item" href="templates/total.html">Total Number of Births</a></li>
+        <li><a class="dropdown-item" href="templates/race.html">Births by Race</a></li>
+        <li><a class="dropdown-item" href="templates/state.html">Births by State</a></li>
+      
       </ul>
     </div>
   </nav>
-  <!-- End of navbar -->
+  End of navbar -->
   <!-- **********************************************************************  -->
 
   <!-- Start of container -->
@@ -63,48 +73,45 @@
           <p>The data provides insight on births in each state. Select an indicator to view state data. Results will be
             shown as a table, map or trend graph, as available.</p>
           </p>
+<br>
+          <p>Use the interactive charts below to explore the dataset</p>
         </article>
       </div>
       <div class="col-md-12">
 
         <!-- Start of Visualizations imageNav Area -->
 
-        <!-- <body>
-
-          <h2>Automatic Slideshow</h2>
-          <p>Change image every 2 seconds:</p>
-
-          <div class="slideshow-container">
-
-            <div class="mySlides fade">
-              <div class="numbertext">1 / 3</div>
-              <img src="Images/pregnantbelly.jpg" style="width:100%">
-              <div class="text">Caption Text</div>
+        <div class="row">
+          <div class="col-md-2">
+            <div class="well">
+              <h5>State:</h5>
+              <select
+                id="selDataset"
+                onchange="optionChanged(this.value)"
+              ></select>
             </div>
-
-            <div class="mySlides fade">
-              <div class="numbertext">2 / 3</div>
-              <img src="Images/realities-of-pregnancy.jpg" style="width:100%">
-              <div class="text">Caption Two</div>
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Birth Info</h3>
+              </div>
+              <div id="sample-metadata" class="panel-body"></div>
             </div>
-
-            <div class="mySlides fade">
-              <div class="numbertext">3 / 3</div>
-              <img src="Images/childlove.jpg" style="width:100%">
-              <div class="text">Caption Three</div>
-            </div>
-
           </div>
-          <br>
-
-          <div style="text-align:center">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-          </div> -->
-
-          <!-- End of the Visualizations imageNav Area -->
-          <!-- End of container -->
+          <div class="col-md-10">
+            <div id="bar"></div>
+          </div>
+          <div class="col-md-10">
+            <div id="gauge"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-24">
+            <div id="bubble"></div>
+          </div>
+        </div>
+      </div>
+         
+        
           <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
             integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
             crossorigin="anonymous"></script>
