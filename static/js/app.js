@@ -100,4 +100,25 @@ buildCharts(newSample);
 metadata(newSample);
 }
 
- 
+// Javascript for data.html
+d3
+  .json("/birthrate")
+  .then(data => {
+    const dataset = data.data;
+    
+    const tbody = document.querySelector("tbody");
+    high_vacs.map(item => {
+      tbody.innerHTML += `
+      <tr>
+        <td>${item.state}</td>
+        <td>${item.year}</td>
+        <td>${item.race}</td>
+        <td>${item.births}</td>
+        <td>${item.total_pop}</td>
+        <td>${item.birth_rate}</td>
+        <td>${item.female_pop}</td>
+        <td>${item.fertility_rate}</td>
+      </tr>
+      `
+    })
+  })
