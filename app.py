@@ -12,7 +12,7 @@ from sqlalchemy import Sequence
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy.sql import text
-
+import json
 
 #Connect to database
 connection_string = "postgresql://postgres:postgres@localhost:5432/BirthRate"
@@ -31,45 +31,34 @@ inspector = inspect(engine)
 
 #Executing Raw SQL Statements
 con = engine.connect()
-rs = con.execute("SELECT * FROM birthrate")
+rs = con.execute("SELECT * FROM births")
 
-print(rs.fetchall())
-
-# #Declare a mapping
-# Base = automap_base()
-# Base.prepare(engine, reflect=True)
+# print(rs.fetchall())
 
 
-# Base.classes.keys()
-# birthrate = Base.classes.birthrate
-# births = Base.classes.births
-
-# session = Session(engine)
-
-# session.query(birthrate)
-
-# @app.route("/")
-# def home():
-#     return render_template("index.html")
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 
-# @app.route("/birthrate")
-# def birthrate():
-#     # data = []
-#     # for info in (rs):
-#     #     data.append({
-#     #         "State": 'state',
-#     #         "Year": 'year',
-#     #         'Race':'race',
-#     #         "Births": "births",
-#     #         'Total Population': 'total_pop',
-#     #         'Birth Rate' : 'birth_rate',
-#     #         'Female Population': 'female_pop',
-#     #         "Fertility Rate": 'fertility_rate',
-#     #     })
-#     # return jsonify(data=data)
-#     return "Monicah Rocks... The world can't handle another!"
+@app.route("/births")
+def births():
+    data = []
+    for info in (rs.fetchall()):
+        # print(info)      
+        data.append({
+            "state": info["state"],
+            "year": info["year"],
+            'race': info['race'],
+            "births": info['births'],
+            # 'total_pop':info['total_pop'] ,
+            # 'birth_rate':info['birth_rate'],
+            # 'female_pop':info['female_pop'],
+            # 'fertility_rate':info['fertility_rate'],
+        })
+           
+    return jsonify(data=data)
 
 
-# if __name__ == "__main__":
-#     app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
