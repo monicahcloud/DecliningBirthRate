@@ -44,6 +44,36 @@
   <!-- End of navbar -->
   <!-- **********************************************************************  -->
 
+<!-- code for jQuery babies fading -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).jQuery.ready(function(){
+  $("button").click(function(){
+    $("#div1").jQuery.fadeIn();
+    $("#div2").jQuery.fadeIn("slow");
+    $("#div3").jQuery.fadeIn(3000);
+  });
+});
+</script>
+</head>
+<body>
+
+<p>Demonstrate fadeIn() with different parameters.</p>
+
+<button>Click to fade in boxes</button><br><br>
+
+<div id="div1" style="width:80px;height:80px;display:none;background-color:red;"></div><br>
+<div id="div2" style="width:80px;height:80px;display:none;background-color:green;"></div><br>
+<div id="div3" style="width:80px;height:80px;display:none;background-color:blue;"></div>
+
+
+
+
+
+
+
+
   <!-- Start of container -->
   <div class="container">
     <section class="row">

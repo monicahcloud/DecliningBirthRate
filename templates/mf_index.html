@@ -7,13 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link
-    
-      rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="static/css/main.css" />
+  <link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../static/styles.css" />
  
-  
-
+  <!-- add jQuery href here -->
+   <!-- <link href="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+  crossorigin="anonymous" /> -->
+ 
 </head>
 
 <body>
@@ -26,13 +26,70 @@
   <h2 class="text-center">"Reproduction is important in order to achieve a balance of family life, diversity, socio-economic equality and
     progress across communities."</h2>
 
+<<<<<<< HEAD:templates/index.html
     <img
     src="../static/images/adorable-babies-of-different-races.jpg"
+||||||| 69e9d70:templates/index.html
+    <img
+    src="static/images/adorable-babies-of-different-races.jpg"
+=======
+    <!-- <img
+    src="../static/images/adorable-babies-of-different-races.jpg"
+>>>>>>> 27d342525882f1ad80e63cf3214b83e825967e66:templates/mf_index.html
     class="img-fluid rounded mx-auto d-block"
     alt="bacteria"
     style="width: 800px; height: 500px"
+<<<<<<< HEAD:templates/index.html
   />
 
+||||||| 69e9d70:templates/index.html
+  />
+  <!-- <p>Use the interactive charts below to explore the dataset</p> -->
+=======
+  /> -->
+  <!-- <p>Use the interactive charts below to explore the dataset</p> -->
+
+<!-- lets see if we can use jQuery to fadeIn the babies -->
+    <!-- <button>Babies</button>
+        <div class="cuteBabies">
+          <img id="babies" src="../static/images/adorable-babies-of-different-races.jpg">
+        </div>
+      <script>
+        $(document).ready(function() {
+          $("button").click(function() {
+            $("#babies").fadeIn("slow", 300);
+          });
+      });
+</script> -->
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
+<script>
+$(document).ready(function() {
+  $("button").click(function() {
+    $("#babies").animate({left: '250px'});
+  });
+});
+</script>
+</head>
+<body>
+  
+<button>Babies</button>
+ 
+<div id="cuteBabies">
+  <img id="babies" src="../static/images/adorable-babies-of-different-races.jpg" alt="">
+</div>  
+
+</body>
+</html>
+
+ 
+
+
+<!-- no more fading babies -->
+
+>>>>>>> 27d342525882f1ad80e63cf3214b83e825967e66:templates/mf_index.html
 </div>
 </div>
 <br>
@@ -98,7 +155,13 @@
           </div>
         </div>
       </div>
-         
+
+      
+          <script
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"
+          ></script>
         
           <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
             integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
@@ -107,6 +170,11 @@
             integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
             crossorigin="anonymous"></script>
             <script src" href="static/js/app.js"></script>
+
+
+
+
+
         </body>
 
 </html>
