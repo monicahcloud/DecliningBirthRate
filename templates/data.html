@@ -10,31 +10,95 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link rel="stylesheet" href="../static/css/styles.css">
+  <link rel="stylesheet" href="../static/css/main.css">
 </head>
 
 <body>
   <!-- header -->
-  <h1 class="text-center display-1">Birth Info</h1>
+  <div class="col-md-2">
+    <a class="btn btn-primary " href="/" role="button">Home </a>
+  </div>
+
+ <h1 class="text-center display-1">Birth Info</h1>
+  <p class="text-center description-text">
+    The following table includes all of the data used.
+  </p> 
+ 
   <!-- main content -->
-  <main>
+  <!-- <main>
     <div class="table-responsive">
-      <table class="table">
-        <thead>
+      <table class="table table-bordered table-hover table-condensed">
+        <thead class= "thead-dark">
           <tr>
             <th scope="col">State</th>
             <th scope="col">Year</th>
             <th scope="col">Race</th>
             <th scope="col">Births</th>
-            <!-- <th scope="col">Total Population</th>
-            <th scope="col">Birth Rate</th>
-            <th scope="col">Female Population</th>
-            <th scope="col">Fertility Rate</th> -->
-        </tr>
+          </tr>
         <tbody></tbody>
         </thead>
       </table>
     </div>
-  </main>
+  </main>  --> 
+  <div class="container">
+    <div class="row margin-top-50">
+        <div class="col-md-2">
+            <aside class="filters">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Filter Search</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <ul class="list-group" id="filters">
+                                <li class="filter list-group-item">
+                                    <label for="date">Enter a State</label>
+                                    <input class="form-control" id="state" type="text" placeholder="Alabama">
+                                </li>
+                               
+                                <li class="filter list-group-item">
+                                    <label for="state">Enter a Year</label>
+                                    <input class="form-control" id="year" type="text" placeholder="2016">
+                                </li>
+                                <li class="filter list-group-item">
+                                    <label for="country">Enter a Race</label>
+                                    <input class="form-control" id="race" type="text" placeholder="White">
+                                </li>
+                               
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <div class="col-md-10">
+            <main>
+                <!-- <h1 class="text-center display-1">Birth Info</h1>
+                <p class="text-center description-text">
+
+                </p> -->
+                <div class="col-md-10">
+                  <div id="table-area" class="">
+                    <!-- <h1 class="text-center loader" id="loader">Loading...</h1> -->
+                    <table id="ufo-table" class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th class="table-head">State</th>
+                          <th class="table-head">Year</th>
+                          <th class="table-head">Race</th>
+                          <th class="table-head">Births</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              </div>
+                <div class="table-responsive">
+               
+<footer class="footer">
+    <span class="bottom"></span>
+</footer>
+</div>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
     integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
     crossorigin="anonymous"></script>
@@ -45,4 +109,4 @@
   <script src="../static/js/app.js"></script>
 </body>
 
-</html>
+</html> 

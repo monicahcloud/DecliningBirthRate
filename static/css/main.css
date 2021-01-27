@@ -1,8 +1,6 @@
-
-body {
+* body {
+  padding: 0;
   margin: 0;
-  background-image: url("../static/images/childlove.jpg") ;
-  background-size: cover;
 }
 
 /* Style the header */
@@ -28,23 +26,19 @@ h2 {
 }
 
 p {font-family:Georgia, 'Times New Roman', Times, serif;
-  font-size: 20px;
+  font-size: 25px;
   color: black ;
   text-align: left;
   }
+
+.btn{
+  text-align: left;
+  font-size: 25px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
 
 img{
   box-shadow: 10px 10px 5px black;
   }  
 
-/* .dropdownMenuButton{
-  text-align: left;
-}
-
-.dropdown-item{
-  text-align: left;
-}
-
-.btn{
-  text-align: left;
-} */
+  #mapid { height: 180px; }
