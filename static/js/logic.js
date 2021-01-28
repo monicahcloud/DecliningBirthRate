@@ -1,88 +1,114 @@
-// console.log("This is my first map");
+var statesData = "static/js/us-states.js"
+var mapboxAccessToken = "pk.eyJ1IjoibWNsb3VkIiwiYSI6ImNranA2Y3B1MDBwZXYyc2szYmpkbm93ZDYifQ.5cVoG_tdyO5NEIL1xLGMBg"
+// / Create a map of the United States of America
+//Initialize the map & set view to our chosen geographical coordinates & a zoom level
+let map = L.map('map').setView([37.8, -96], 4);
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    id: 'mapbox/light-v9',
+    // attribution: ..., 
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: "pk.eyJ1IjoibWNsb3VkIiwiYSI6ImNranA2Y3B1MDBwZXYyc2szYmpkbm93ZDYifQ.5cVoG_tdyO5NEIL1xLGMBg",
+    }).addTo(map);
 
-// var mapboxAccessToken = API_KEY;
-// const coordinate = [37.8, -96];
-
-// //Get startcode from leaflet website documentation
-// // let mymap = L.map('map').setView(coordinate, 13);
-// var myMap = L.map("map", {
-//   center: [37.8, -96],
-//   zoom: 8
-// });
-// L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
-//   // attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
-//   tileSize: 512,
-//   // maxZoom: 18,
-//   zoomOffset: -1,
-//   id: "mapbox/light-v9",
-//   accessToken: API_KEY
-// }).addTo(myMap);
-
-// L.geoJson(statesData).addTo(map);
-
-
-// // Load in geojson data
-// var geoData = "static/data/Median_Household_Income_2016.geojson";
-
-// // var geojson;
-
-// // // Grab data with d3
-// // d3.json(geoData, function(data) {
-
-// //   // Create a new choropleth layer
-// //   geojson = L.choropleth(data, {
-
-// //     // Define what  property in the features to use
-// //     valueProperty: "MHI2016",
-
-// //     // Set color scale
-// //     scale: ["#ffffb2", "#b10026"],
-
-// //     // Number of breaks in step range
-// //     steps: 10,
-
-// //     // q for quartile, e for equidistant, k for k-means
-// //     mode: "q",
-// //     style: {
-// //       // Border color
-// //       color: "#fff",
-// //       weight: 1,
-// //       fillOpacity: 0.8
-// //     },
-
-// //     // Binding a pop-up to each layer
-// //     onEachFeature: function(feature, layer) {
-// //       layer.bindPopup("Zip Code: " + feature.properties.ZIP + "<br>Median Household Income:<br>" +
-// //         "$" + feature.properties.MHI2016);
-// //     }
-// //   }).addTo(myMap);
-
-// //   // Set up the legend
-// //   var legend = L.control({ position: "bottomright" });
-// //   legend.onAdd = function() {
-// //     var div = L.DomUtil.create("div", "info legend");
-// //     var limits = geojson.options.limits;
-// //     var colors = geojson.options.colors;
-// //     var labels = [];
-
-// //     // Add min & max
-// //     var legendInfo = "<h1>Median Income</h1>" +
-// //       "<div class=\"labels\">" +
-// //         "<div class=\"min\">" + limits[0] + "</div>" +
-// //         "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
-// //       "</div>";
-
-// //     div.innerHTML = legendInfo;
-
-// //     limits.forEach(function(limit, index) {
-// //       labels.push("<li style=\"background-color: " + colors[index] + "\"></li>");
-// //     });
-
-// //     div.innerHTML += "<ul>" + labels.join("") + "</ul>";
-// //     return div;
-// //   };
-
-// //   // Adding legend to the map
-// //   legend.addTo(myMap);
-
-// // });
+L.geoJson(statesData).addTo(map);
+// colorberewer 2.0 color advice for cartography: https://colorbrewer2.org/#type=sequential&scheme=YlGn&n=9
+// https://colorbrewer2.org/#type=sequential&scheme=RdPu&n=9 
+function getColor(d) {
+    return d > 6800 ? '#004529' :
+           d > 6100  ? '#006837' :
+           d > 5400  ? '#238443' :
+           d > 4700  ? '#41AB5D' :
+           d > 4000   ? '#78C679' :
+           d > 3300   ? '#ADDD8E' :
+           d > 2600   ? '#D9F0A3' :
+           d > 1900   ? '#F7FCB9' :
+                      '#FFFFE5';
+}
+// define a styling function for our GeoJSON layer so that its fillColor depends on feature.properties.density property, 
+// also adjusting the appearance a bit and adding a nice touch with dashed stroke.
+function style(feature) {
+    return {
+        fillColor: getColor(feature.properties.density),
+        weight: 1,
+        opacity: 1,
+        color: '#238443',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
+}
+L.geoJson(statesData, {style: style}).addTo(map);
+//INTERACTIVE: Make the states highlighted visually in some way when they are hovered with a mouse. 
+// First we’ll define an event listener for layer mouseover event:
+function highlightFeature(e) {
+    let layer = e.target;
+    layer.setStyle({
+        weight: 3,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+    info.update(layer.feature.properties);
+}
+// ^^ we got access to the layer that was hovered through e.target,^^ 
+// set a thick grey border on the layer as our highlight effect, 
+// also bringing it to the front so that the border doesn’t clash with nearby states 
+// (but not for IE, Opera or Edge, since they have problems doing bringToFront on mouseover).
+// mouse-out
+function resetHighlight(e) {
+    geojson.resetStyle(e.target);
+    info.update();
+}
+// The handy geojson.resetStyle method will reset the layer style to its default state (defined by our style function). 
+// For this to work, make sure our GeoJSON layer is accessible through the geojson variable by defining it before our 
+// listeners and assigning the layer to it later:
+// var geojson;
+// ... our listeners
+// geojson = L.geoJson(...);
+// As an additional touch, let’s define a click listener that zooms to the state:
+function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+// Now we’ll use the onEachFeature option to add the listeners on our state layers:
+function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+geojson = L.geoJson(statesData, {
+    style: style,
+    onEachFeature: onEachFeature
+}).addTo(map);
+// This makes the states highlight nicely on hover and gives us the ability to add other interactions inside our listeners.
+let info = L.control();
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+// method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+    this._div.innerHTML = '<h4>Number of Species Per State</h4>' +  (props ?
+        '<b>' + props.name + '</b><br />' + props.density + ' species count'
+        : 'Hover over a state');
+};
+info.addTo(map);
+let legend = L.control({position: 'bottomright'});
+legend.onAdd = function (map) {
+    let div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 1900, 2600, 3300, 4000, 4700, 5400, 6100],
+        labels = [];
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (let i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+    return div;
+};
+legend.addTo(map);

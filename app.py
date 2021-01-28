@@ -22,7 +22,7 @@ Base.prepare(engine, reflect=True)
 
 birthrate = Base.classes.birthrate
 births_table = Base.classes.births
-
+babytable = Base.classes.babytable
 
 #Flask Set up
 app = Flask(__name__)
@@ -62,6 +62,35 @@ def births():
 # print(data)
 
     return jsonify(data)
+
+@app.route("/baby")
+def baby():
+    
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+
+    #Return a list of data including the state, year, race and births"""
+    # Query all data
+    data = session.query(babytable.id, babytable.girlsName, babytable.girlsAmount, babytable.boysName, babytable.boysAmount).all()
+
+# print(results)
+
+    session.close()
+
+    babyNames = []
+    for id, girlsName, girlsAmount, boysName, boysAmount in results:
+    # print(state, year, race, births)
+# Create a dictionary from the row data and append to a list of all_passengers
+        info = {}
+        info['id'] = id
+        info['girlsName'] = girlsName
+        info['girlsAmount'] = girlsAmount
+        info['boysName'] = boysName
+        info['boysAmount'] = boysAmount
+        babyNames.append(info)
+# print(data)
+
+    return jsonify(babyNames)
     
 if __name__ == '__main__':
     app.run(debug=True)
