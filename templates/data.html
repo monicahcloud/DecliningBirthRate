@@ -33,8 +33,8 @@
       </div>
     </nav>
     <div class="hero text-center">
-      <h1>Monicah Cloud</h1>
-      <p text-center> There is no other!!! </p>
+      <h1>Birth Trends 2016 - 2019</h1>
+ 
     </div>
     <div>
       <h1 class="text-center display-1">Birth Info</h1>
@@ -42,6 +42,7 @@
         The following table includes all of the data used.
       </p>
     </div>
+
     <div class="container">
       <div class="row margin-top-50">
         <div class="col-md-2">
@@ -49,28 +50,22 @@
             <div class="panel panel-default">
               <div class="panel-heading">Filter Search</div>
               <div class="panel-body">
-                <div class="form-group">
-                  <ul class="list-group" id="filters">
-                    <li class="filter list-group-item">
-                      <label for="date">Enter a State</label>
-                      <input class="form-control" id="state" type="text" placeholder="Alabama">
-                    </li>
-
-                    <li class="filter list-group-item">
-                      <label for="state">Enter a Year</label>
-                      <input class="form-control" id="year" type="text" placeholder="2016">
-                    </li>
-                    <li class="filter list-group-item">
-                      <label for="country">Enter a Race</label>
-                      <input class="form-control" id="race" type="text" placeholder="White">
-                    </li>
-                  </ul>
+                <form>
+                  <div class="form-group">
+                    <ul class="list-group" id="filters">
+                      <li class="filter list-group-item">
+                        <label for="date">Enter a Year</label>
+                        <input class="form-control" id="datetime" type="text" placeholder="2016">
+                      </li>
+                    </ul>
+                  </div>
                   <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
-                </div>
+                </form>
               </div>
             </div>
           </aside>
         </div>
+
         <div class="col-md-10">
           <main>
             <div class="col-md-10">
@@ -80,7 +75,7 @@
                     <tr>
                       <th class="table-head">State</th>
                       <th class="table-head">Year</th>
-                      <th class="table-head">Race</th>
+                    
                       <th class="table-head">Births</th>
                     </tr>
                   </thead>

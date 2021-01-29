@@ -20,9 +20,10 @@ Base = automap_base()
 # reflect the tables
 Base.prepare(engine, reflect=True)
 
-birthrate = Base.classes.birthrate
+# birthrate = Base.classes.birthrate
 births_table = Base.classes.births
-babytable = Base.classes.babytable
+# print(births_table)
+# babytable = Base.classes.babytable
 
 #Flask Set up
 app = Flask(__name__)
@@ -44,53 +45,52 @@ def births():
 
     #Return a list of data including the state, year, race and births"""
     # Query all data
-    results = session.query(births_table.state, births_table.year, births_table.race, births_table.births).all()
+    results = session.query(births_table.state, births_table.year, births_table.births).all()
 # print(results)
 
     session.close()
 
     data = []
-    for state, year, race, birth in results:
-    # print(state, year, race, births)
+    for state, year, births in results:
+    # print(state, year, births)
 # Create a dictionary from the row data and append to a list of all_passengers
         info = {}
         info['state'] = state
         info['year'] = year
-        info['race'] = race
-        info['births'] = birth
+        info['births'] = births
         data.append(info)
-# print(data)
+    print(data)
 
     return jsonify(data)
 
-@app.route("/baby")
-def baby():
+# # @app.route("/baby")
+# # def baby():
     
-    # Create our session (link) from Python to the DB
-    session = Session(engine)
+# #     # Create our session (link) from Python to the DB
+# #     session = Session(engine)
 
-    #Return a list of data including the state, year, race and births"""
-    # Query all data
-    data = session.query(babytable.id, babytable.girlsName, babytable.girlsAmount, babytable.boysName, babytable.boysAmount).all()
+# #     #Return a list of data including the state, year, race and births"""
+# #     # Query all data
+# #     data = session.query(babytable.id, babytable.girlsName, babytable.girlsAmount, babytable.boysName, babytable.boysAmount).all()
 
-# print(results)
+# # # print(results)
 
-    session.close()
+# #     session.close()
 
-    babyNames = []
-    for id, girlsName, girlsAmount, boysName, boysAmount in results:
-    # print(state, year, race, births)
-# Create a dictionary from the row data and append to a list of all_passengers
-        info = {}
-        info['id'] = id
-        info['girlsName'] = girlsName
-        info['girlsAmount'] = girlsAmount
-        info['boysName'] = boysName
-        info['boysAmount'] = boysAmount
-        babyNames.append(info)
-# print(data)
+# #     babyNames = []
+# #     for id, girlsName, girlsAmount, boysName, boysAmount in results:
+# #     # print(state, year, race, births)
+# # # Create a dictionary from the row data and append to a list of all_passengers
+# #         info = {}
+# #         info['id'] = id
+# #         info['girlsName'] = girlsName
+# #         info['girlsAmount'] = girlsAmount
+# #         info['boysName'] = boysName
+# #         info['boysAmount'] = boysAmount
+# #         babyNames.append(info)
+# # # print(data)
 
-    return jsonify(babyNames)
+# #     return jsonify(babyNames)
     
 if __name__ == '__main__':
     app.run(debug=True)
