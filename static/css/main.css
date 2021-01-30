@@ -1,8 +1,6 @@
-
-body {
+* body {
+  padding: 0;
   margin: 0;
-  background-image: url("../static/images/childlove.jpg") ;
-  background-size: cover;
 }
 
 /* Style the header */
@@ -28,18 +26,51 @@ h2 {
 }
 
 p {font-family:Georgia, 'Times New Roman', Times, serif;
-  font-size: 20px;
+  font-size: 25px;
   color: black ;
   text-align: left;
   }
+
+.btn{
+  text-align: left;
+  font-size: 25px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
 
 img{
   box-shadow: 10px 10px 5px black;
   }  
 
+<<<<<<< HEAD
 .btn {
   text-align: left;
   padding: 5px 38px;
   text-decoration: none;
   font-size: 18px;  
 }
+=======
+#map {width: 800px; 
+  height: 600px;
+  padding: 20 px;
+  margin: 40; }
+
+  .info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+.bar {
+  fill: orange;
+}
+
+.bar:hover {
+  fill: green;
+}
+>>>>>>> 5638ec32c52efbbd0b1546954d8397399ab92e61
